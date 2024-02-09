@@ -1,0 +1,13 @@
+// Request
+
+{
+  "title": "string",
+  "hashtag": ["@string", "@string", "@string"],
+  "username": "string",
+  "content": "string",
+}
+
+// Response
+{
+  "SoN": "boolean"
+}

@@ -1,0 +1,26 @@
+//Request
+{
+  "boardSeq": "number"
+}
+
+//Response
+{
+  "title": "string",
+  "hashtag": ["@string", "@string", "@string"],
+  "username": "string",
+  "like_count": "number",
+  "hate_count": "number",
+  "content": "string",
+  "comment": [
+    {
+      "boardSeq": "number",
+      "comment_Seq": "number",
+      "comment_content": "string",
+      "subSeq": "string|undefined",
+      "comment_hashtag": ["@string", "@string", "@string"],
+      "like_count": "number",
+      "hate_count": "number",
+      "userName" : "string" // reg_id 참고해서 불러올것
+    }
+  ]
+}
