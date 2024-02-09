@@ -1,0 +1,24 @@
+// Request 페이징 게시글 10개로
+{
+  "pageNum" : "number"
+}
+
+// Response
+[
+    {
+      "boardSeq": "number",
+      "title": "string",
+      "hashtag": ["string", "string", "string"],
+      "username": "string",
+      "like_count": "number",
+      "comment_count": "number" // 이건 직접 계산해줘야함
+  },
+  {
+    "boardSeq": "number",
+    "title": "string",
+    "hashtag": ["string", "string", "string"],
+    "username": "string",
+    "like_count": "number",
+    "comment_count": "number" // 이건 직접 계산해줘야함
+  }
+]

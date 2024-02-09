@@ -1,0 +1,12 @@
+// Request
+
+{
+  "acs": "string" // access token
+  "ref": "string" // refresh token
+}
+
+// Response
+{
+  "acs": "string" // access token
+  "ref": "string" // refresh token
+}
