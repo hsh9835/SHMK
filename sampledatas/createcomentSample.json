@@ -1,0 +1,14 @@
+// Request
+
+{
+  "boardSeq": "number",
+  "commentSeq": "number|undefined",
+  "hashtag": ["@string", "@string", "@string"],
+  "username": "string",
+  "content": "string",
+}
+
+// Response
+{
+  "SoN": "boolean"
+}

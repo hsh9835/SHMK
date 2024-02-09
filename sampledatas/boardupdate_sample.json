@@ -1,0 +1,17 @@
+//Request
+{
+  "boardSeq": "number",
+  "title": "string",
+  "hashtag": ["@string", "@string", "@string"],
+  "username": "string",
+  "content": "string",
+}
+
+//Response
+{
+  "boardSeq": "number",
+  "title": "string",
+  "hashtag": ["@string", "@string", "@string"],
+  "username": "string",
+  "content": "string",
+}
