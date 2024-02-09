@@ -1,0 +1,12 @@
+// Request
+
+{
+  "id": "string",
+  "pw": "string" // 이거 원본으로
+}
+
+// Response
+{
+  "acs": "string" // access token
+  "ref": "string" // refresh token
+}
