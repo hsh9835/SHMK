@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "plugins": [
+    "import",
+    "react",
+    "@typescript-eslint",
+    "eslint-plugin-tailwindcss"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ]
+}
