@@ -54,6 +54,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.springframework.data:spring-data-rest-hal-explorer")
+<<<<<<< HEAD
 
     // 테스트 위해서 추가
 //    implementation("org.springframework.boot:spring-boot-starter-thymeleaf") // Thymeleaf 의존성
@@ -63,6 +64,12 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
+=======
+    implementation("org.springframework.session:spring-session-jdbc")
+    compileOnly("org.projectlombok:lombok")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+>>>>>>> f7bc2af (SHMK 프로젝트 시작)
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
@@ -70,6 +77,7 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("org.springframework.security:spring-security-test")
+<<<<<<< HEAD
 
     // gson
     implementation ("com.google.code.gson:gson:2.8.6")
@@ -77,6 +85,8 @@ dependencies {
     // jwt 설정
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation("io.jsonwebtoken:jjwt-impl:0.11.2")
+=======
+>>>>>>> f7bc2af (SHMK 프로젝트 시작)
 }
 
 dependencyManagement {
