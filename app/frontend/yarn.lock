@@ -133,6 +133,95 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/core@npm:^1.0.0, @floating-ui/core@npm:^1.5.3":
+  version: 1.6.0
+  resolution: "@floating-ui/core@npm:1.6.0"
+  dependencies:
+    "@floating-ui/utils": "npm:^0.2.1"
+  checksum: d6a47cacde193cd8ccb4c268b91ccc4ca254dffaec6242b07fd9bcde526044cc976d27933a7917f9a671de0a0e27f8d358f46400677dbd0c8199de293e9746e1
+  languageName: node
+  linkType: hard
+
+"@floating-ui/dom@npm:^1.5.4, @floating-ui/dom@npm:^1.6.1":
+  version: 1.6.3
+  resolution: "@floating-ui/dom@npm:1.6.3"
+  dependencies:
+    "@floating-ui/core": "npm:^1.0.0"
+    "@floating-ui/utils": "npm:^0.2.0"
+  checksum: 83e97076c7a5f55c3506f574bc53f03d38bed6eb8181920c8733076889371e287e9ae6f28c520a076967759b9b6ff425362832a5cdf16a999069530dbb9cce53
+  languageName: node
+  linkType: hard
+
+"@floating-ui/react-dom@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "@floating-ui/react-dom@npm:2.0.8"
+  dependencies:
+    "@floating-ui/dom": "npm:^1.6.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: e57b2a498aecf8de0ec28adf434257fca7893bd9bd7e78b63ac98c63b29b9fc086fc175630154352f3610f5c4a0d329823837f4f6c235cc0459fde6417065590
+  languageName: node
+  linkType: hard
+
+"@floating-ui/react@npm:^0.26.5":
+  version: 0.26.9
+  resolution: "@floating-ui/react@npm:0.26.9"
+  dependencies:
+    "@floating-ui/react-dom": "npm:^2.0.8"
+    "@floating-ui/utils": "npm:^0.2.1"
+    tabbable: "npm:^6.0.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 997f5a471ac6080c5162ad86fbb8e5bc0eca9335c40d8445597a90ba645e5d35ee796c29bdc66d868182afe5901804ecd52b82560332ae123b0c269400421e63
+  languageName: node
+  linkType: hard
+
+"@floating-ui/utils@npm:^0.2.0, @floating-ui/utils@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "@floating-ui/utils@npm:0.2.1"
+  checksum: 33c9ab346e7b05c5a1e6a95bc902aafcfc2c9d513a147e2491468843bd5607531b06d0b9aa56aa491cbf22a6c2495c18ccfc4c0344baec54a689a7bb8e4898d6
+  languageName: node
+  linkType: hard
+
+"@headlessui-float/react@npm:^0.13.2":
+  version: 0.13.2
+  resolution: "@headlessui-float/react@npm:0.13.2"
+  dependencies:
+    "@floating-ui/core": "npm:^1.5.3"
+    "@floating-ui/dom": "npm:^1.5.4"
+    "@floating-ui/react": "npm:^0.26.5"
+  peerDependencies:
+    "@headlessui/react": ^1.0.0
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 89f2ae4b3916af3c517def9a3fc6ccd85e47b64b935be801b36bfe4e6d4d47a0b28f6a6a3928303148b324425b62d34f43e4a63501593738597c71e54fc7b386
+  languageName: node
+  linkType: hard
+
+"@headlessui/react@npm:^1.7.18":
+  version: 1.7.18
+  resolution: "@headlessui/react@npm:1.7.18"
+  dependencies:
+    "@tanstack/react-virtual": "npm:^3.0.0-beta.60"
+    client-only: "npm:^0.0.1"
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 9615f7b709842f2e56b3ef1a8f1a77faed7982e86af52f057a5c2a9950d073672073a6c09829f0c26ed7287e298f5e2345f3898dbc2cc13318af10598ceb4bbc
+  languageName: node
+  linkType: hard
+
+"@headlessui/tailwindcss@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@headlessui/tailwindcss@npm:0.2.0"
+  peerDependencies:
+    tailwindcss: ^3.0
+  checksum: a75799102729d74c080ec3d604fd4d9dea86eda08424062a7f6d6870033f372cd389898147662b5eb1a039fb4e19a1132f52d9da7b5c1c6077b28ed98bf9e8f1
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -369,6 +458,25 @@ __metadata:
   dependencies:
     tslib: "npm:^2.4.0"
   checksum: 3a3b179b3369acd26c5da89a0e779c756ae5231eb18a5507524c7abf955f488d34d86649f5b8417a0e19879688470d06319f5cfca2273d6d6b2046950e0d79af
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-virtual@npm:^3.0.0-beta.60":
+  version: 3.1.1
+  resolution: "@tanstack/react-virtual@npm:3.1.1"
+  dependencies:
+    "@tanstack/virtual-core": "npm:3.1.1"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: f632e64ac3198605b30779501d65e70b7ad89fd0a93ab1a4dee21afabead462f5a8f0747b863018c96aac580704729d0f6a1d7203a5a2319b2c4527300d921eb
+  languageName: node
+  linkType: hard
+
+"@tanstack/virtual-core@npm:3.1.1":
+  version: 3.1.1
+  resolution: "@tanstack/virtual-core@npm:3.1.1"
+  checksum: 1ddb19ce15d4eb8b67c45760c396cc9bf0a44c7e780ed57e9ce0f77b7c299c9912b1436453759eedc88b4c97cce153e7cf30e611805fbbf02eab79450aee6ead
   languageName: node
   linkType: hard
 
@@ -1059,7 +1167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"client-only@npm:0.0.1":
+"client-only@npm:0.0.1, client-only@npm:^0.0.1":
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
   checksum: 0c16bf660dadb90610553c1d8946a7fdfb81d624adea073b8440b7d795d5b5b08beb3c950c6a2cf16279365a3265158a236876d92bce16423c485c322d7dfaf8
@@ -1939,6 +2047,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend@workspace:."
   dependencies:
+    "@headlessui-float/react": "npm:^0.13.2"
+    "@headlessui/react": "npm:^1.7.18"
+    "@headlessui/tailwindcss": "npm:^0.2.0"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
@@ -1951,6 +2062,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
     eslint-plugin-tailwindcss: "npm:^3.14.1"
+    headlessui: "npm:^0.0.0"
     next: "npm:14.1.0"
     postcss: "npm:^8"
     prettier: "npm:^3.2.4"
@@ -2253,6 +2365,13 @@ __metadata:
   dependencies:
     function-bind: "npm:^1.1.2"
   checksum: c330f8d93f9d23fe632c719d4db3d698ef7d7c367d51548b836069e06a90fa9151e868c8e67353cfe98d67865bf7354855db28fa36eb1b18fa5d4a3f4e7f1c90
+  languageName: node
+  linkType: hard
+
+"headlessui@npm:^0.0.0":
+  version: 0.0.0
+  resolution: "headlessui@npm:0.0.0"
+  checksum: 250f9fc4f18469721f35c0e3a2103627281d4a78d9eac624dfc7b7ed57b191266074c05c577cd16bb3a1bb332f308197ed623ddea3c256d2aa29c96efbb9d968
   languageName: node
   linkType: hard
 
@@ -4303,6 +4422,13 @@ __metadata:
     "@pkgr/core": "npm:^0.1.0"
     tslib: "npm:^2.6.2"
   checksum: 2864a5c3e689ad5b991bebbd8a583c5682c4fa08a4f39986b510b6b5d160c08fc3672444069f8f96ed6a9d12772879c674c1f61e728573eadfa90af40a765b74
+  languageName: node
+  linkType: hard
+
+"tabbable@npm:^6.0.1":
+  version: 6.2.0
+  resolution: "tabbable@npm:6.2.0"
+  checksum: 980fa73476026e99dcacfc0d6e000d41d42c8e670faf4682496d30c625495e412c4369694f2a15cf1e5252d22de3c396f2b62edbe8d60b5dadc40d09e3f2dde3
   languageName: node
   linkType: hard
 
