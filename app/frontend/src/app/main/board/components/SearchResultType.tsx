@@ -1,5 +1,5 @@
 
-import {SearchProps} from "@/app/main/board/page";
+import {SearchProps} from "@main/board/page";
 
 export function SearchResultType(props:SearchProps) {
 

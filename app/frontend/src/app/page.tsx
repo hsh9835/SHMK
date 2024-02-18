@@ -4,7 +4,7 @@ export default function Home() {
 
   return (
       <>
-          <p>hello</p>
+          <p className={'bg-black'}>hello</p>
           <div className={'bg-white text-black text-lg'}>
               <p className={'text-black bg-red indigo-600 bg-indigo-950'}>hello</p>
               <button className={'py-2 px-4 rounded-md text-white bg-indigo-600'}>Yes</button>

@@ -1,4 +1,4 @@
-import {SearchProps} from "@/app/main/board/page";
+import {SearchProps} from "@main/board/page";
 
 interface BoardContents {
     title: string,
@@ -13,7 +13,7 @@ export function BoardList(props:SearchProps) {
 
     props.search
 
-    const boardList: [BoardContents] = [
+    const boardList:BoardContents[] = [
             {
                 title: "title",
                 hashtag: ["@react", "@NextJS", "@SpringBoot", "@MariaDB"],
