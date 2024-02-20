@@ -26,10 +26,15 @@ repositories {
     mavenCentral()
 }
 
-extra["snippetsDir"] = file("build/generated-snippets")
+//extra["snippetsDir"] = file("build/generated-snippets")
+val snippetsDir by extra { file("build/generated-snippets") }   // 변경
 extra["springCloudAzureVersion"] = "5.9.1"
 
 dependencies {
+    // swagger ui 추가
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("io.springfox:springfox-swagger-ui:3.0.0")
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-data-rest")
@@ -49,7 +54,11 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.springframework.data:spring-data-rest-hal-explorer")
-    implementation("org.springframework.session:spring-session-jdbc")
+
+    // 테스트 위해서 추가
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf") // Thymeleaf 의존성
+
+//    implementation("org.springframework.:spring--jdbc")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
@@ -85,5 +94,6 @@ tasks.test {
 
 tasks.asciidoctor {
     inputs.dir(snippetsDir)
-    dependsOn(test)
+    // dependsOn(test)
+    dependsOn(tasks.test) // 변경
 }
