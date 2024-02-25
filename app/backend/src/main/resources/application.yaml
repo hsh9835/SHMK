@@ -1,0 +1,9 @@
+#port change
+server:
+  port = 8999
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
