@@ -58,7 +58,7 @@ dependencies {
     // 테스트 위해서 추가
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf") // Thymeleaf 의존성
 
-//    implementation("org.springframework.:spring--jdbc")
+    implementation("org.springframework:spring-jdbc")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")

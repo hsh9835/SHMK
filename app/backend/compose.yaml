@@ -1,6 +1,7 @@
 services:
   mariadb:
     image: 'mariadb:latest'
+    container_name: 'SHMK_mariadb'
     environment:
       - 'MARIADB_DATABASE=mydatabase'
       - 'MARIADB_PASSWORD=1234'
@@ -8,4 +9,4 @@ services:
       - 'MARIADB_USER=root'
       - 'SPRING_JPA_HIBERNATE_DDL-AUTO=create'
     ports:
-      - '3306:3306'
+      - '9905:3306'

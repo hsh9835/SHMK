@@ -55,11 +55,11 @@ data class MainBoard(
     @Column(name = "UPD_ID", length = 20)
     val updId: String? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
-    val regUser: User_info,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UPD_ID", insertable = false, updatable = false)
-    val updUser: User_info
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
+//    val regUser: User_info,
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "UPD_ID", insertable = false, updatable = false)
+//    val updUser: User_info
 )
