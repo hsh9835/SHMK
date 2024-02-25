@@ -1,9 +1,6 @@
 
-import {SearchProps} from "@main/board/page";
 
-export function SearchResultType(props:SearchProps) {
-
-    props.search
+export function SearchResultType() {
 
     const typeList:string[] = [
         "React",
