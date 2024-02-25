@@ -1,14 +1,15 @@
 package org.shmk.backend.entity
 
-import com.nimbusds.openid.connect.sdk.claims.UserInfo
 import jakarta.persistence.*
+import lombok.NoArgsConstructor
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
 
 @Entity
+@NoArgsConstructor
 @Table(name = "main_board")
 data class MainBoard(
-
+    // 변경 가능성이 있는 필드 var (getter, setter), 없는 필드 val (Only getter)
     @Id
     @Comment("게시판 시퀀스")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +17,11 @@ data class MainBoard(
 
     @Comment("게시물 제목")
     @Column(nullable = false, length = 50)
-    val title: String,
+    var title: String,
 
     @Comment("게시물 내용")
     @Column(length = 5000)
-    val content: String? = null,
+    var content: String? = null,
 
     @Comment("해시태그 시퀀스")
     @Column(name = "seq_hashtag", nullable = false)
@@ -32,10 +33,10 @@ data class MainBoard(
 
     @Comment("추천수")
     @Column(name = "like_count")
-    val likeCount: Int? = null,
+    var likeCount: Int? = null,
 
     @Column(name = "hate_count")
-    val hateCount: Int? = null,
+    var hateCount: Int? = null,
 
     @Column(name = "seq_comment")
     val seqComment: Long? = null,
@@ -49,16 +50,16 @@ data class MainBoard(
     val regId: String,
 
     @Column(name = "UPD_DT")
-    val updDt: LocalDateTime? = null,
+    var updDt: LocalDateTime? = null,
 
     @Column(name = "UPD_ID", length = 20)
     val updId: String? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
-    val regUser: User_info,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UPD_ID", insertable = false, updatable = false)
-    val updUser: UserInfo
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
+//    val regUser: User_info,
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "UPD_ID", insertable = false, updatable = false)
+//    val updUser: User_info
 )

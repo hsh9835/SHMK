@@ -1,11 +1,13 @@
 
 import jakarta.persistence.*
+import lombok.NoArgsConstructor
 import org.hibernate.annotations.Comment
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.entity.User_info
 import java.time.LocalDateTime
 
 @Entity
+@NoArgsConstructor
 @Table(name = "main_comment")
 @Comment("게시물 댓글")
 data class MainComment (
@@ -54,14 +56,14 @@ data class MainComment (
     @Column(name = "UPD_ID", columnDefinition = "varchar(20)")
     val updId: String? = null,
 
-    // 관계 설정
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_seq", insertable = false, updatable = false)
-    val mainBoard: MainBoard,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
-    val userInfo: User_info
+//    // 관계 설정
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "board_seq", insertable = false, updatable = false)
+//    val mainBoard: MainBoard,
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
+//    val userInfo: User_info
 
     //@ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name = "UPD_ID", insertable = false, updatable = false)

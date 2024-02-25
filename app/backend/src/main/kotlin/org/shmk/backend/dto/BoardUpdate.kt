@@ -2,7 +2,7 @@ package org.shmk.backend.dto
 
 data class BoardUpdate (
     val boardSeq: Int,
-    val title: String,
+    var title: String,
     val hashtag: List<String>,
     val username: String,
     val content: String
