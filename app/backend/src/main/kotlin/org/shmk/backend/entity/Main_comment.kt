@@ -1,11 +1,13 @@
 
 import jakarta.persistence.*
+import lombok.NoArgsConstructor
 import org.hibernate.annotations.Comment
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.entity.User_info
 import java.time.LocalDateTime
 
 @Entity
+@NoArgsConstructor
 @Table(name = "main_comment")
 @Comment("게시물 댓글")
 data class MainComment (
