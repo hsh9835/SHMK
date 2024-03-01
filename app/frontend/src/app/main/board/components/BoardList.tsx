@@ -1,4 +1,5 @@
 import {Avatar} from "@mui/material";
+import axios from "axios";
 import Link from "next/link";
 
 interface BoardContents {
@@ -11,6 +12,7 @@ interface BoardContents {
 }
 
 export function BoardList() {
+
 
     const boardList:BoardContents[] = [
             {
@@ -46,7 +48,7 @@ export function BoardList() {
 
                     return (
                         <>
-                            <Link href={'/main/admin'} className={"group flex my-3 px-5 py-4 bg-red-700 rounded-xl"}>
+                            <Link href={'/main/board/'+board.contentID} className={"group flex my-3 px-5 py-4 bg-red-700 rounded-xl"}>
                                 <div className={'group flex w-full'}>
                                 <Avatar className={'items-center justify-center'}>{board.picture ? board.picture : 'H'}</Avatar>
                                     <div className={'group flex-row h-full mx-3 w-96'}>

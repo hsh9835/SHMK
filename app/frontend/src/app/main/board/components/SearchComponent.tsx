@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from "react"
+import {useState} from "react"
 
-export function SearchComponent() {
+import axios from 'axios'
 
-    const [search, setSearch] = useState<string>("안녕")
+export function SearchComponent():JSX.Element {
+
+    const [search, setSearch] = useState<string>('')
 
     return (
         <>
@@ -16,7 +18,7 @@ export function SearchComponent() {
             }/>
             <button onClick={
                 () => {
-                    console.log(search)
+                    axios.post('http://localhost:1045/boardList').then()
                 }
             } className={"mx-5 px-5 text-xs rounded-md bg-indigo-600"}>검색</button>
         </>

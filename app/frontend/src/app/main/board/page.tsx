@@ -9,7 +9,7 @@ export interface SearchProps {
 }
 
 
-export default function Board() {
+export default function Board():JSX.Element {
 
     return (
         <>
