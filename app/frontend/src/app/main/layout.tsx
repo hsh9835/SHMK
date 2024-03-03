@@ -1,3 +1,4 @@
+import { DarkModeSwitch } from "@/components/switchs";
 import Link from "next/link";
 
 interface TopMenu {
@@ -35,8 +36,11 @@ export default function MainLayout({children}: Readonly<{ children: React.ReactN
                         })
                     }
                 </div>
+                <div className={'ml-auto flex items-center'}>
+                    <DarkModeSwitch/>
+                </div>
             </div>
-            <div className={'px-5 h-full'}>
+            <div className={'px-24 mt-5 flex-grow'}>
                 {children}
             </div>
         </>

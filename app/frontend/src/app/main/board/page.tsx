@@ -2,6 +2,7 @@ import {AdditionalContent} from "@main/board/components/AdditionalContent";
 import {SearchComponent} from "@main/board/components/SearchComponent";
 import {SearchResultType} from "@main/board/components/SearchResultType";
 import {BoardList} from "@main/board/components/BoardList";
+import Link from "next/link";
 
 export interface SearchProps {
     setSearch: React.Dispatch<React.SetStateAction<string>>,
@@ -13,15 +14,19 @@ export default function Board():JSX.Element {
 
     return (
         <>
-            <div className={'my-5 h-7 flex justify-end'}>
+            <div className={'mb-5 flex justify-end'}>
+                <Link href={'/main/board/write'}
+                      className={'mr-auto w-20 text-white flex items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-800'}>
+                    작성
+                </Link>
                 <SearchComponent/>
             </div>
-            <div className={'flex w-full h-100'}>
-                <div className={'w-4/5 h-full'}>
+            <div className={'flex w-full h-full'}>
+                <div className={'w-4/5'}>
                     <SearchResultType/>
                     <BoardList/>
                 </div>
-                <div className={'w-1/5 h-full'}>
+                <div className={'ml-5 w-1/5'}>
                     <AdditionalContent></AdditionalContent>
                 </div>
             </div>
