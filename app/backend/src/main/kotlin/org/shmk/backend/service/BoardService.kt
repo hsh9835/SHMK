@@ -1,3 +1,4 @@
+package org.shmk.backend.service
 
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.repository.BoardRepository
