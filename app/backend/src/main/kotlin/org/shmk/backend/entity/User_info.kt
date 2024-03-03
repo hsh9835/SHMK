@@ -8,7 +8,7 @@ import org.hibernate.annotations.Comment
 @NoArgsConstructor
 @Comment("유저 정보")
 @Table(name = "user_info")
-data class User_info (
+data class User_info(
     @Id
     @Comment("ID")
     @Column(length = 20)

@@ -23,9 +23,9 @@ data class MainBoard(
     @Column(length = 5000)
     var content: String? = null,
 
-    @Comment("해시태그 시퀀스")
-    @Column(name = "seq_hashtag", nullable = false)
-    val seqHashtag: Long,
+    @Comment("해시태그 리스트")
+    @Column(name = "hashtag_list", nullable = false)
+    var hashtagList: List<String>,
 
     @Comment("유저 시퀀스")
     @Column(name = "seq_user", nullable = false)
