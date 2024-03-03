@@ -40,6 +40,14 @@
   - BackEnd 구축 필요
 - [ ] Redux
   - 당장은 쓸일이 없을거 같음
+- [x] Yarn PnP 적용
+  - Yarn 기반임으로 다음의 설정 과정을 수행하기 바람(추후 .sh .bat 파일 작성후 정식 배포 예정)
+    ```shell
+    # ./SHMK
+    cd add/frontend
+    yarn install
+    yarn next dev
+    ```
 
 ### [__BackEnd__](https://github.com/hsh9835/SHMK/tree/feature/backend)
 ![Spring_Boot](https://img.shields.io/badge/3.2.2---?logo=spring&label=spring&labelColor=dark)
