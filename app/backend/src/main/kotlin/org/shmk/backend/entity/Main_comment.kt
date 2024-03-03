@@ -1,9 +1,8 @@
+package org.shmk.backend.entity
 
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
 import org.hibernate.annotations.Comment
-import org.shmk.backend.entity.MainBoard
-import org.shmk.backend.entity.User_info
 import java.time.LocalDateTime
 
 @Entity
@@ -18,7 +17,7 @@ data class MainComment (
 
     @Comment("게시판 번호")
     @Column(name = "board_seq", nullable = false, columnDefinition = "int")
-    val boardSeq: Int? = null,
+    val boardSeq: Long? = null,
 
     @Comment("댓글 내용")
     @Column(name = "content", columnDefinition = "varchar(5000)")
@@ -56,18 +55,18 @@ data class MainComment (
     @Column(name = "UPD_ID", columnDefinition = "varchar(20)")
     val updId: String? = null,
 
-//    // 관계 설정
+    // 관계 설정
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "board_seq", insertable = false, updatable = false)
 //    val mainBoard: MainBoard,
 //
 //    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
-//    val userInfo: User_info
-
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "UPD_ID", insertable = false, updatable = false)
-    //val userInfo: UserInfo
+//    @JoinColumn(name = "REG_ID", referencedColumnName = "id", insertable = false, updatable = false)
+//    val regUserInfo: User_info,
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "UPD_ID", referencedColumnName = "id", insertable = false, updatable = false)
+//    val updUserInfo: User_info
 )
 /*
 indexes = [
