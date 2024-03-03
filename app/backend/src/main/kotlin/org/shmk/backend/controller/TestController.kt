@@ -1,7 +1,5 @@
 package org.shmk.backend.controller
 
-import org.shmk.backend.dto.BoardUpdate
-import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
@@ -17,6 +15,5 @@ class TestController {
         //model.addAttribute("data","hello, world!")  model 을 가공
         return 123 // HTML 파일 경로를 viewResolver 에 전달 (resources/templates 폴덩서 전달받은 model 을 가공하여 html 파일 변환 예정)
     }
-
 
 }

@@ -1,5 +1,7 @@
 
 import org.shmk.backend.entity.MainBoard
+import org.shmk.backend.service.BoardService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
@@ -8,14 +10,22 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/board")
-class BoardController(private val boardService: BoardService) {
+class BoardController() {
 
-    @GetMapping
-    fun getAllBoards(pageable: Pageable): ResponseEntity<Page<MainBoard>> {
-        val boards = boardService.getAllBoards(pageable)
+    @Autowired
+    private lateinit var boardService: BoardService
 
-        return ResponseEntity.ok().body(boards)
-//        return ResponseEntity.ok().body(boardDTOs)
+    @GetMapping("/jsonTest")
+    fun jsonTest(): Map<String, Any> {
+        return mapOf("hello" to "world")
+    }
+
+    @GetMapping("/list", produces = ["application/json"])
+    fun getAllBoards(@RequestParam(required = false, defaultValue = "") pageable: Pageable): Page<MainBoard> {
+
+        val board = boardService.getAllBoards(pageable)
+        print(board)
+        return board
     }
 
 
@@ -29,9 +39,10 @@ class BoardController(private val boardService: BoardService) {
         }
     }
 
-    @PostMapping
+    @PostMapping("/save")
     fun saveBoard(@RequestBody board: MainBoard): ResponseEntity<MainBoard> {
         val savedBoard = boardService.saveBoard(board)
+        print(savedBoard)
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBoard)
     }
 
