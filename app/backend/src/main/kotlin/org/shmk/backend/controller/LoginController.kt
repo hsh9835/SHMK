@@ -18,4 +18,12 @@ class LoginController {
         val pw = request.pw
         return "jwt"
     }
+
+//    @Operation(summary = "회원 가입")
+//    @PostMapping("/sign-up")
+//    fun signUp(@RequestBody request: SignUpRequest) = ApiResponse.success(signService.registMember(request))
+//
+//    @Operation(summary = "로그인")
+//    @PostMapping("/sign-in")
+//    fun signIn(@RequestBody request: SignInRequest) = ApiResponse.success(signService.signIn(request))
 }
