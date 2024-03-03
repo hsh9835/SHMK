@@ -56,9 +56,9 @@ dependencies {
 <<<<<<< HEAD
 
     // 테스트 위해서 추가
-//    implementation("org.springframework.boot:spring-boot-starter-thymeleaf") // Thymeleaf 의존성
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf") // Thymeleaf 의존성
 
-//    implementation("org.springframework.:spring--jdbc")
+    implementation("org.springframework:spring-jdbc")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
@@ -77,9 +77,6 @@ dependencies {
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("org.springframework.security:spring-security-test")
 <<<<<<< HEAD
-
-    // gson
-    implementation ("com.google.code.gson:gson:2.8.6")
 
     // jwt 설정
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
