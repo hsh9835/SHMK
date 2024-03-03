@@ -1,11 +1,4 @@
-import axios from "axios";
-
-export interface SearchProps {
-    setSearch: React.Dispatch<React.SetStateAction<string>>,
-    search: string
-}
-
-export default async function Content(props) {
+export default async function Content(props:any) {
 
     // let content = await axios.get()
 

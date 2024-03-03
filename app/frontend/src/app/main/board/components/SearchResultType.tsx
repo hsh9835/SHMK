@@ -11,7 +11,7 @@ export function SearchResultType() {
 
     return (
         <>
-            <nav className={'flex'}>
+            <nav className={'flex text-whitet dark:text-white'}>
                 <a className={'mx-2 ml-5'}>
                     전체
                 </a>
