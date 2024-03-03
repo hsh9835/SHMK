@@ -1,10 +1,8 @@
-"use client"
-
-import React, {useState} from "react";
-import {AdditionalContent} from "@/app/main/board/AdditionalContent";
-import {SearchComponent} from "@/app/main/board/SearchComponent";
-import {SearchResultType} from "@/app/main/board/SearchResultType";
-import {BoardList} from "@/app/main/board/BoardList";
+import {AdditionalContent} from "@main/board/components/AdditionalContent";
+import {SearchComponent} from "@main/board/components/SearchComponent";
+import {SearchResultType} from "@main/board/components/SearchResultType";
+import {BoardList} from "@main/board/components/BoardList";
+import Link from "next/link";
 
 export interface SearchProps {
     setSearch: React.Dispatch<React.SetStateAction<string>>,
@@ -12,20 +10,23 @@ export interface SearchProps {
 }
 
 
-export default function Board() {
-
-    const [search, setSearch] = useState<string>("안녕")
+export default function Board():JSX.Element {
 
     return (
         <>
-            <div className={'text-white'}>{search}</div>
-            <SearchComponent search={search} setSearch={setSearch}/>
-            <div className={'flex flex-row w-full h-100'}>
-                <div className={'w-4/5 h-full'}>
-                    <SearchResultType search={search} setSearch={setSearch}></SearchResultType>
-                    <BoardList search={search} setSearch={setSearch}></BoardList>
+            <div className={'mb-5 flex justify-end'}>
+                <Link href={'/main/board/write'}
+                      className={'mr-auto w-20 text-white flex items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-800'}>
+                    작성
+                </Link>
+                <SearchComponent/>
+            </div>
+            <div className={'flex w-full h-full'}>
+                <div className={'w-4/5'}>
+                    <SearchResultType/>
+                    <BoardList/>
                 </div>
-                <div className={'w-1/5 h-full'}>
+                <div className={'ml-5 w-1/5'}>
                     <AdditionalContent></AdditionalContent>
                 </div>
             </div>
