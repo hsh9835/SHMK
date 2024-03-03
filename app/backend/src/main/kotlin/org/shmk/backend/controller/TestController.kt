@@ -15,4 +15,6 @@ class TestController {
         model.addAttribute("data","hello, world!") // model 을 가공
         return "hello" // HTML 파일 경로를 viewResolver 에 전달 (resources/templates 폴덩서 전달받은 model 을 가공하여 html 파일 변환 예정)
     }
+
+
 }
