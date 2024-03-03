@@ -1,22 +1,40 @@
 package org.shmk.backend.config
 
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer
+import org.springframework.security.config.annotation.web.configurers.CorsConfigurer
+import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer
+import org.springframework.security.web.SecurityFilterChain
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.servlet.config.annotation.CorsRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
-@Suppress("DEPRECATION")
 @Configuration
-class SecurityConfig {
-    private val allowedUrls = arrayOf("/", "/swagger-ui/**", "/v3/**", "/sign-up", "/sign-in")	// sign-up, sign-in 추가
+@EnableWebSecurity
+class SecurityConfig: WebMvcConfigurer {
 
-//    @Bean
-//    fun filterChain(http: HttpSecurity) = http
-//        .csrf().disable()
-//        .headers { it.frameOptions().sameOrigin() }
-//        .authorizeHttpRequests {
-//            it.requestMatchers(*allowedUrls).permitAll()	// 허용할 url 목록을 배열로 분리했다
-//                .requestMatchers(PathRequest.toH2Console()).permitAll()
-//                .anyRequest().authenticated()
-//        }
-//        .and() // 메서드 체인을 종료하고 HttpSecurity 객체 반환
-//        .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
-//        .build()!!
+    override fun addCorsMappings(registry: CorsRegistry) {
+        registry.addMapping("/**")
+            .allowedOrigins("*")
+            .allowedMethods("GET", "POST", "PUT", "DELETE")
+    }
+
+    @Bean
+    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
+        val corsConfiguration = CorsConfiguration().apply {
+            allowedOrigins = listOf("*")
+            allowedMethods = listOf("GET", "POST", "PUT", "DELETE")
+        }
+
+        http
+            .cors { it.configurationSource { corsConfiguration } }
+            .authorizeRequests { authorizeRequests ->
+                authorizeRequests.anyRequest().permitAll()
+            }
+            .apply(HttpBasicConfigurer<HttpSecurity>()).disable() // Basic 인증 비활성화
+        return http.build()
+    }
 }
