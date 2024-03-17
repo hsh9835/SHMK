@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import {Editor} from "@toast-ui/react-editor";
+import {Editor, Viewer} from "@toast-ui/react-editor";
 import '@toast-ui/editor/dist/toastui-editor.css';
 import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
@@ -19,19 +19,19 @@ export default function ToastUIEditor() {
         ['scrollSync'],
     ];
 
-    return (
-        <>
-            <Editor
-                initialEditType={'wysiwyg'}
-                previewStyle={window.innerWidth > 1000 ? 'vertical' : 'tab'}
-                hideModeSwitch={true}
-                height="calc(100% - 10rem)"
-                theme={'dark'} // '' & 'dark'
-                usageStatistics={false}
-                toolbarItems={toolbarItems}
-                useCommandShortcut={true}
-                plugins={[colorSyntax]}
-            />
-        </>
+    return (<>
+        <Editor
+            initialValue=" "
+            height="calc(100% - 10rem)"
+            initialEditType={'wysiwyg'}
+            previewStyle={window.innerWidth > 1000 ? 'vertical' : 'tab'}
+            hideModeSwitch={false}
+            usageStatistics={true}
+            toolbarItems={toolbarItems}
+            useCommandShortcut={true}
+            viewer={true}
+            plugins={[colorSyntax]}
+        />
+    </>
     );
 }

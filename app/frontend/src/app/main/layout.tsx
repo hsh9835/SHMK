@@ -1,5 +1,5 @@
-import { DarkModeSwitch } from "@/components/switchs";
 import Link from "next/link";
+import { DarkModeSwitch } from "@/components/switchs";
 
 interface TopMenu {
     name: string,
@@ -23,6 +23,7 @@ export default function MainLayout({children}: Readonly<{ children: React.ReactN
 
     return (
         <>
+            <div className={'flex flex-col h-full'}>
             <div className={'topcomponents'}>
                 <div className={'h-auto text-3xl'}>SHMK</div>
                 <div className={'flex items-center ml-10 text-3xl'}>
@@ -40,9 +41,10 @@ export default function MainLayout({children}: Readonly<{ children: React.ReactN
                     <DarkModeSwitch/>
                 </div>
             </div>
-            <div className={'px-24 mt-5 flex-grow'}>
+            <div className={'px-24 pt-5 grow flex flex-col'}>
                 {children}
             </div>
+        </div>
         </>
     )
 }
