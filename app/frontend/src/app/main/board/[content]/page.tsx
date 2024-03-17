@@ -4,17 +4,16 @@ import ToastUIViewer from "@components/toast_ui/editor/toast_ui_viewer";
 
 export default async function Content(props:any) {
 
-    const boardContent = MKServer.get('/hello')
+    const boardContent:Promise<string> = await MKServer.get('/hello')
         .then(e=> e.data)
         .catch(() => 'error')
 
+    console.log(boardContent)
+    console.log(typeof boardContent)
+
     return (
         <>
-            <div>
-                {props.params.content}
-                {boardContent}
-            </div>
-            <ToastUIViewer/>
+            <ToastUIViewer content={"# Hello World"}/>
         </>
     );
 }
