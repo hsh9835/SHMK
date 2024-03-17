@@ -25,7 +25,7 @@ export default function Write(){
     }, [tempSave]);
 
     return(
-        <>
+        <form action={"/api/write"} method={"POST"}>
             <Toaster
                 position='bottom-center'
                 reverseOrder={false}
@@ -35,6 +35,7 @@ export default function Write(){
                 <input
                     className={'w-full px-3 py-2.5 text-1xl border border-gray-300 rounded-md'}
                     type={'text'}
+                    name={"title"}
                     placeholder={'제목을 입력해주세요.'}
                 />
             </div>
@@ -70,6 +71,6 @@ export default function Write(){
                     수정
                 </button>
             </div>
-        </>
+        </form>
     )
 }
