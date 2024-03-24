@@ -13,7 +13,7 @@ data class MainComment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq", nullable = false, columnDefinition = "int auto_increment")
-    val seq: Int? = null,
+    val comment_Seq: Int? = null,
 
     @Comment("게시판 번호")
     @Column(name = "board_seq", nullable = false, columnDefinition = "int")
@@ -21,7 +21,7 @@ data class MainComment (
 
     @Comment("댓글 내용")
     @Column(name = "content", columnDefinition = "varchar(5000)")
-    val content: String? = null,
+    val comment_content: String? = null,
 
     @Comment("서브 시퀀스")
     @Column(name = "sub_seq", columnDefinition = "int")
@@ -29,15 +29,15 @@ data class MainComment (
 
     @Comment("댓글 해시태그")
     @Column(name = "comment_hashtag", columnDefinition = "varchar(21)")
-    val commentHashtag: String? = null,
+    val comment_hashtag: String? = null,
 
     @Comment("추천 수")
     @Column(name = "like_count", columnDefinition = "int")
-    val likeCount: Int? = null,
+    val like_count: Int? = null,
 
     @Comment("싫어요 수")
     @Column(name = "hate_count", columnDefinition = "int")
-    val hateCount: Int? = null,
+    val hate_count: Int? = null,
 
     @Comment("등록 날짜")
     @Column(name = "REG_DT", nullable = false, columnDefinition = "datetime")

@@ -8,12 +8,12 @@ import java.time.LocalDateTime
 @Entity
 @NoArgsConstructor
 @Table(name = "main_board")
-data class MainBoard(
+data class  MainBoard(
     // 변경 가능성이 있는 필드 var (getter, setter), 없는 필드 val (Only getter)
     @Id
     @Comment("게시판 시퀀스")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val seq: Long? = null,
+    val boardSeq: Long? = null,
 
     @Comment("게시물 제목")
     @Column(nullable = false, length = 50)
@@ -25,7 +25,7 @@ data class MainBoard(
 
     @Comment("해시태그 리스트")
     @Column(name = "hashtag_list", nullable = false)
-    var hashtagList: List<String>,
+    var hashtag: List<String>,
 
     @Comment("유저 시퀀스")
     @Column(name = "seq_user", nullable = false)
@@ -33,17 +33,17 @@ data class MainBoard(
 
     @Comment("추천수")
     @Column(name = "like_count")
-    var likeCount: Int? = null,
+    var like_count: Int? = null,
 
     @Column(name = "hate_count")
-    var hateCount: Int? = null,
+    var hate_count: Int? = null,
 
     @Column(name = "seq_comment")
     val seqComment: Long? = null,
 
     @Comment("생성날짜")
     @Column(name = "REG_DT", nullable = false)
-    val regDt: LocalDateTime,
+    var regDt: LocalDateTime? = null,
 
     @Comment("생성 주체 ID")
     @Column(name = "REG_ID", nullable = false, length = 20)
@@ -62,4 +62,17 @@ data class MainBoard(
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "UPD_ID", insertable = false, updatable = false)
 //    val updUser: User_info
-)
+){
+    init {
+        if(like_count == null){
+            like_count = 0
+        }
+        if(hate_count == null){
+            hate_count = 0
+        }
+        if(regDt == null){
+            regDt = LocalDateTime.now()
+        }
+
+    }
+}
