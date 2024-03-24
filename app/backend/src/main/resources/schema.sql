@@ -40,3 +40,35 @@ CREATE TABLE IF NOT EXISTS main_comment (
     CONSTRAINT main_comment_user_info_ID_fk FOREIGN KEY (REG_ID) REFERENCES user_info (ID),
     CONSTRAINT main_comment_user_info_ID_fk_2 FOREIGN KEY (UPD_ID) REFERENCES user_info (ID)
 ) COMMENT '게시물 댓글';
+
+-- 샘플 데이터 추가
+INSERT INTO user_info (ID, password, nickname)
+VALUES
+('user1', 'password1', 'nickname1'),
+('user2', 'password2', 'nickname2'),
+('user3', 'password3', 'nickname3');
+
+INSERT INTO main_board (title, content, seq_hashtag, seq_user, like_count, hate_count, seq_comment, REG_DT, REG_ID, UPD_DT, UPD_ID)
+VALUES
+('Title1', 'Content1', 1, 1, 10, 2, 1, '2024-03-24 12:00:00', 'user1', '2024-03-24 12:30:00', 'user2'),
+('Title2', 'Content2', 2, 2, 8, 1, 2, '2024-03-24 13:00:00', 'user2', NULL, NULL),
+('Title3', 'Content3', 3, 3, 5, 3, NULL, '2024-03-24 14:00:00', 'user3', NULL, NULL);
+
+INSERT INTO main_comment (board_seq, content, sub_seq, comment_hashtag, like_count, hate_count, REG_DT, REG_ID, UPD_DT, UPD_ID)
+VALUES
+(1, 'Comment1', NULL, '#tag1', 5, 1, '2024-03-24 12:10:00', 'user2', '2024-03-24 12:40:00', 'user3'),
+(1, 'Comment2', NULL, '#tag2', 3, 2, '2024-03-24 12:20:00', 'user3', NULL, NULL),
+(2, 'Comment3', NULL, '#tag3', 2, 0, '2024-03-24 13:10:00', 'user1', NULL, NULL);
+
+
+
+
+
+
+
+
+
+
+
+
+
