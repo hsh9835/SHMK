@@ -2,16 +2,14 @@ package org.shmk.backend.service
 
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.repository.BoardRepository
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class BoardService(private val boardRepository: BoardRepository) {
 
-    fun getAllBoards(pageable: Pageable): Page<MainBoard> {
-        return boardRepository.findAll(pageable)
+    fun getAllBoards(): List<MainBoard> {
+        return boardRepository.findAll()
     }
 
     fun getBoardById(id: Long): Optional<MainBoard> {
@@ -30,7 +28,7 @@ class BoardService(private val boardRepository: BoardRepository) {
         // 제목, 내용, 해시태그 업데이트
         existingBoard.title = updatedBoard.title
         existingBoard.content = updatedBoard.content
-        existingBoard.hashtagList = updatedBoard.hashtagList
+        existingBoard.hashtag = updatedBoard.hashtag
         return boardRepository.save(existingBoard)
     }
 
