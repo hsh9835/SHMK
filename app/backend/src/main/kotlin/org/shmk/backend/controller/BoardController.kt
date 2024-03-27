@@ -1,7 +1,7 @@
 
+import com.google.gson.Gson
 import org.shmk.backend.entity.MainBoard
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
+import org.shmk.backend.service.BoardService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -10,26 +10,27 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/board")
 class BoardController(private val boardService: BoardService) {
 
-    @GetMapping
-    fun getAllBoards(pageable: Pageable): ResponseEntity<Page<MainBoard>> {
-        val boards = boardService.getAllBoards(pageable)
-
-        return ResponseEntity.ok().body(boards)
-//        return ResponseEntity.ok().body(boardDTOs)
+    @GetMapping("/jsonTest")
+    fun jsonTest(): String {
+        val gson = Gson()
+        val json = gson.toJson(mapOf("test" to "test"))
+        println(json)
+        return json
     }
 
+    @GetMapping("/list", produces = ["application/json"])
+    fun getAllBoards(): List<MainBoard> {
+        return boardService.getAllBoards()
+    }
 
     @GetMapping("/{id}")
     fun getBoardById(@PathVariable id: Long): ResponseEntity<MainBoard> {
         val board = boardService.getBoardById(id)
-        return if (board.isPresent) {
-            ResponseEntity.ok().body(board.get())
-        } else {
-            ResponseEntity.notFound().build()
-        }
+        return board.map { ResponseEntity.ok().body(it) }
+            .orElseGet { ResponseEntity.notFound().build() }
     }
 
-    @PostMapping
+    @PostMapping("/save")
     fun saveBoard(@RequestBody board: MainBoard): ResponseEntity<MainBoard> {
         val savedBoard = boardService.saveBoard(board)
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBoard)
