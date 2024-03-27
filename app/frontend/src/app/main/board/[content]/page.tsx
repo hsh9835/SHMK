@@ -11,7 +11,6 @@ export default async function Content(props:any) {
     return (
         <>
             <div>
-                {props.params.content}
                 {boardContent}
             </div>
             <ToastUIViewer/>
