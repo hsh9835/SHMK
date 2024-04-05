@@ -1,9 +1,15 @@
 
 import com.google.gson.Gson
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
+import org.shmk.backend.dto.resp.BoardListResp
+import org.shmk.backend.dto.resp.BoardResp
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.service.BoardService
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -18,10 +24,22 @@ class BoardController(private val boardService: BoardService) {
         return json
     }
 
+    // http://localhost:8999/board/list?page=2
     @GetMapping("/list", produces = ["application/json"])
-    fun getAllBoards(): List<MainBoard> {
-        return boardService.getAllBoards()
+    fun getAllBoards(request: HttpServletRequest
+    , response: HttpServletResponse
+    , model: Model
+    , @RequestParam("page", defaultValue = "0") page: Int
+    , pageable: Pageable
+    ): List<BoardListResp> {
+        return boardService.getAllBoards(page, 5)
     }
+
+    // page
+//    @GetMapping("/list/{id}", produces = ["application/json"])
+//    fun getBoards(): List<MainBoard> {
+//        return boardService.getAllBoards()
+//    }
 
     @GetMapping("/{id}")
     fun getBoardById(@PathVariable id: Long): ResponseEntity<MainBoard> {
@@ -31,9 +49,17 @@ class BoardController(private val boardService: BoardService) {
     }
 
     @PostMapping("/save")
-    fun saveBoard(@RequestBody board: MainBoard): ResponseEntity<MainBoard> {
+    fun saveBoard(@RequestBody board: MainBoard): ResponseEntity<BoardResp> {
         val savedBoard = boardService.saveBoard(board)
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedBoard)
+        var newBoard = boardService.getBoardById(savedBoard.boardSeq)
+        var isCreated = false;
+
+        if(newBoard != null){
+            isCreated = true;
+        }
+        val jsonReq = BoardResp(isCreated)
+        // JsonReq 객체를 ResponseEntity에 담아서 반환합니다.
+        return ResponseEntity.status(HttpStatus.CREATED).body(jsonReq)
     }
 
     @PutMapping("/{id}")

@@ -1,15 +1,38 @@
 package org.shmk.backend.service
 
+import org.shmk.backend.dto.resp.BoardListResp
 import org.shmk.backend.entity.MainBoard
+import org.shmk.backend.entity.MainComment
+import org.shmk.backend.entity.User_info
 import org.shmk.backend.repository.BoardRepository
+import org.shmk.backend.repository.CommentRepository
+import org.shmk.backend.repository.UserRepository
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class BoardService(private val boardRepository: BoardRepository) {
+class BoardService(private val boardRepository: BoardRepository,
+                    private val userRepository: UserRepository,
+                    private val commentRepository: CommentRepository) {
 
-    fun getAllBoards(): List<MainBoard> {
-        return boardRepository.findAll()
+    fun getAllBoards(page:Int, size: Int): List<BoardListResp> {
+        val pageResult: List<MainBoard> = boardRepository.findAll(PageRequest.of(page, size)).content
+
+        val result: List<BoardListResp> = pageResult.map { board ->
+            val user:User_info = userRepository.findById(board.seqUser).orElse(null)
+            val commentLst: List<MainComment> = commentRepository.findByBoardSeq(board.boardSeq)
+
+            BoardListResp(
+                boardSeq = board.boardSeq,
+                title = board.title,
+                hashtag = board.hashtag,
+                username = user?.nickname ?: "Unknown",
+                like_count = board.like_count,
+                comment_count = commentLst.size
+            )
+        }
+        return result
     }
 
     fun getBoardById(id: Long): Optional<MainBoard> {

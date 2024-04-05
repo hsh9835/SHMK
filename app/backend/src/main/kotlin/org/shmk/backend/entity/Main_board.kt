@@ -12,8 +12,9 @@ data class  MainBoard(
     // 변경 가능성이 있는 필드 var (getter, setter), 없는 필드 val (Only getter)
     @Id
     @Comment("게시판 시퀀스")
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val boardSeq: Long? = null,
+    val boardSeq: Long,
 
     @Comment("게시물 제목")
     @Column(nullable = false, length = 50)
@@ -39,7 +40,7 @@ data class  MainBoard(
     var hate_count: Int? = null,
 
     @Column(name = "seq_comment")
-    val seqComment: Long? = null,
+    val seqComment: List<Long>? = null,
 
     @Comment("생성날짜")
     @Column(name = "REG_DT", nullable = false)

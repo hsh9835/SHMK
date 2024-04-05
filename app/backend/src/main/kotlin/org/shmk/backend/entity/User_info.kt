@@ -17,9 +17,9 @@ data class User_info(
 
     @Comment("PW")
     @Column(nullable = false, length = 64)
-    val password: String,
+    var password: String,
 
     @Comment("닉네임")
     @Column(nullable = false)
-    val nickname: Number,
+    var nickname: String,
 )

@@ -13,7 +13,7 @@ data class MainComment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq", nullable = false, columnDefinition = "int auto_increment")
-    val comment_Seq: Int? = null,
+    val comment_Seq: Long? = null,
 
     @Comment("게시판 번호")
     @Column(name = "board_seq", nullable = false, columnDefinition = "int")
