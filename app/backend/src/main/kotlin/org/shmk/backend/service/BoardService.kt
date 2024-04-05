@@ -1,4 +1,3 @@
-package org.shmk.backend.service
 
 import org.shmk.backend.dto.resp.BoardListResp
 import org.shmk.backend.entity.MainBoard

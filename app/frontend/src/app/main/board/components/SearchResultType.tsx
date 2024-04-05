@@ -1,9 +1,6 @@
 
-import {SearchProps} from "@/app/main/board/page";
 
-export function SearchResultType(props:SearchProps) {
-
-    props.search
+export function SearchResultType() {
 
     const typeList:string[] = [
         "React",
@@ -14,7 +11,7 @@ export function SearchResultType(props:SearchProps) {
 
     return (
         <>
-            <nav className={'flex'}>
+            <nav className={'flex text-whitet dark:text-white'}>
                 <a className={'mx-2 ml-5'}>
                     전체
                 </a>
