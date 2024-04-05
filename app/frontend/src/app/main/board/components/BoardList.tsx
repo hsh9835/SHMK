@@ -52,7 +52,7 @@ export function BoardList() {
                     return (
                         <>
                             <Link href={'/main/board/' + board.boardSeq} className={"flex my-3 px-5 py-4 rounded-xl bg-gray-50 shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-gray-300 dark:border-gray-300"}>
-                                <div className={'group flex w-full items-center'}>
+                                {<div className={'group flex w-full items-center'}>
                                     <div
                                         className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white">
                                         H
@@ -79,7 +79,7 @@ export function BoardList() {
                                         <p>댓글 :</p>
                                         <p className={'overflow-hidden overflow-ellipsis'}>{board.likeCount}</p>
                                     </div>
-                                </div>
+                                </div>}
                             </Link>
                         </>
                     );

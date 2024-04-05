@@ -17,16 +17,19 @@ export default function MainLayout({children}: Readonly<{ children: React.ReactN
         {
             name: "admin",
             url: "/main/admin"
+        },
+        {
+            name: "login",
+            url: "/main/login"
         }
     ]
 
 
     return (
-        <>
-            <div className={'flex flex-col h-full'}>
-            <div className={'topcomponents'}>
-                <div className={'h-auto text-3xl'}>SHMK</div>
-                <div className={'flex items-center ml-10 text-3xl'}>
+        <div id={'PageView'} className={'flex flex-col h-full'}>
+            <div id={'Topcomponents'} className={'topcomponents'}>
+                <div id={'PageLogo'} className={'h-auto text-3xl'}>SHMK</div>
+                <div id={'TopMenuArea'} className={'flex items-center ml-10 text-3xl'}>
                     {
                         topMenus.map(data => {
                             return (
@@ -37,14 +40,13 @@ export default function MainLayout({children}: Readonly<{ children: React.ReactN
                         })
                     }
                 </div>
-                <div className={'ml-auto flex items-center'}>
+                <div id={'DarkModeSwitchArea'} className={'ml-auto flex items-center'}>
                     <DarkModeSwitch/>
                 </div>
             </div>
-            <div className={'px-24 pt-5 grow flex flex-col'}>
+            <div id={'ContentsArea'} className={'flex flex-col flex-grow overflow-auto px-24 py-5'}>
                 {children}
             </div>
         </div>
-        </>
     )
 }

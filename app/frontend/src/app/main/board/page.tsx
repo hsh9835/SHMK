@@ -22,12 +22,12 @@ export default function Board():JSX.Element {
                 </Link>
                 <SearchComponent/>
             </div>
-            <div className={'flex w-full grow'}>
+            <div className={'flex flex-grow'}>
                 <div className={'w-4/5'}>
                     <SearchResultType/>
                     <BoardList/>
                 </div>
-                <div className={'ml-5 w-1/5 h-full'}>
+                <div className={'ml-5 w-1/5'}>
                     <AdditionalContent/>
                 </div>
             </div>
