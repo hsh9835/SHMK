@@ -3,12 +3,6 @@
 import {useEffect, useState} from "react";
 import ToastUIEditor from "@components/toast_ui/editor/toast_ui_editor";
 import toast, { Toaster } from "react-hot-toast";
-import dynamic from "next/dynamic";
-
-const DynamicToastUIEditor = dynamic(
-    () => import('@components/toast_ui/editor/toast_ui_editor'),
-    { ssr: false }  // This line is important. It disables server-side rendering for this module.
-);
 
 export default function Write(){
 
@@ -25,7 +19,7 @@ export default function Write(){
     }, [tempSave]);
 
     return(
-        <form action={"/api/write"} method={"POST"}>
+        <form action={"/api/write"} method={"POST"} className={'flex flex-col flex-grow'}>
             <Toaster
                 position='bottom-center'
                 reverseOrder={false}
@@ -39,7 +33,7 @@ export default function Write(){
                     placeholder={'제목을 입력해주세요.'}
                 />
             </div>
-            <DynamicToastUIEditor/>
+            <ToastUIEditor/>
             <div>
                 <div className={'my-2.5'}>
                     <h3 className={'mb-1.5 dark:text-white'}>유형</h3>
