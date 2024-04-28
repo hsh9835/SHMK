@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletResponse
 import org.shmk.backend.dto.resp.BoardListResp
 import org.shmk.backend.dto.resp.BoardResp
 import org.shmk.backend.entity.MainBoard
-import org.shmk.backend.service.BoardService
 import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/board")
-class BoardController(private val boardService: BoardService) {
+class BoardController(private val boardServiceImpl: BoardServiceImpl) {
 
     @GetMapping("/jsonTest")
     fun jsonTest(): String {
@@ -32,7 +31,7 @@ class BoardController(private val boardService: BoardService) {
     , @RequestParam("page", defaultValue = "0") page: Int
     , pageable: Pageable
     ): List<BoardListResp> {
-        return boardService.getAllBoards(page, 5)
+        return boardServiceImpl.getAllBoards(page, 5)
     }
 
     // page
@@ -43,15 +42,16 @@ class BoardController(private val boardService: BoardService) {
 
     @GetMapping("/{id}")
     fun getBoardById(@PathVariable id: Long): ResponseEntity<MainBoard> {
-        val board = boardService.getBoardById(id)
-        return board.map { ResponseEntity.ok().body(it) }
-            .orElseGet { ResponseEntity.notFound().build() }
+        val board = boardServiceImpl.getBoardById(id)
+//        return board.map { ResponseEntity.ok().body(it) }
+//            .orElseGet { ResponseEntity.notFound().build() }
+        return ResponseEntity.ok().body(board);
     }
 
     @PostMapping("/save")
     fun saveBoard(@RequestBody board: MainBoard): ResponseEntity<BoardResp> {
-        val savedBoard = boardService.saveBoard(board)
-        var newBoard = boardService.getBoardById(savedBoard.boardSeq)
+        val savedBoard = boardServiceImpl.saveBoard(board)
+        val newBoard = boardServiceImpl.getBoardById(savedBoard.boardSeq)
         var isCreated = false;
 
         if(newBoard != null){
@@ -64,13 +64,13 @@ class BoardController(private val boardService: BoardService) {
 
     @PutMapping("/{id}")
     fun updateBoard(@PathVariable id: Long, @RequestBody updatedBoard: MainBoard): ResponseEntity<MainBoard> {
-        val updated = boardService.updateBoard(id, updatedBoard)
+        val updated = boardServiceImpl.updateBoard(id, updatedBoard)
         return ResponseEntity.ok().body(updated)
     }
 
     @DeleteMapping("/{id}")
     fun deleteBoard(@PathVariable id: Long): ResponseEntity<Void> {
-        boardService.deleteBoard(id)
+        boardServiceImpl.deleteBoard(id)
         return ResponseEntity.noContent().build()
     }
 }

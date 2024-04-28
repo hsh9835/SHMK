@@ -1,16 +1,18 @@
-package org.shmk.backend.config
-
-import BoardController
-import org.shmk.backend.service.BoardService
+import org.shmk.backend.controller.TestController
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class ControllerConfig(private val boardService: BoardService) {
+class ControllerConfig {
 
     @Bean
-    fun boardController(): BoardController {
-        return BoardController(boardService)
+    fun boardController(boardServiceImpl: BoardServiceImpl): BoardController {
+        return BoardController(boardServiceImpl)
+    }
+
+    @Bean
+    fun testController(boardServiceImpl: BoardServiceImpl): TestController {
+        return TestController(boardServiceImpl)
     }
 
 }

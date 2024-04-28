@@ -1,10 +1,8 @@
 package org.shmk.backend.controller
 
-import com.google.gson.Gson
+import BoardServiceImpl
+import com.nimbusds.jose.shaded.gson.Gson
 import org.shmk.backend.entity.MainBoard
-import org.shmk.backend.service.BoardService
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.ui.Model
@@ -12,37 +10,33 @@ import org.springframework.web.bind.annotation.*
 
 // client 가 요청하는 URL 을 받아오고 싶을 때 Controller 정의
 
-@RestController
-class TestController(private val boardService: BoardService) {
-
-//    @GetMapping("/list", produces = ["application/json"])
-//    fun getAllBoards(pageable: Pageable): Page<MainBoard> {
-//
-//        return boardService.getAllBoards(pageable)
-//    }
+//@RestController
+class TestController(private val boardServiceImpl: BoardServiceImpl) {
 
     @GetMapping("/{id}")
     fun getBoardById(@PathVariable id: Long): ResponseEntity<MainBoard> {
-        val board = boardService.getBoardById(id)
-        return board.map { ResponseEntity.ok().body(it) }
-            .orElseGet { ResponseEntity.notFound().build() }
+        val board = boardServiceImpl.getBoardById(id)
+
+        return ResponseEntity.ok().body(board);
+//        return board.map { ResponseEntity.ok().body(it) }
+//            .orElseGet { ResponseEntity.notFound().build() }
     }
 
     @PostMapping("/save")
     fun saveBoard(@RequestBody board: MainBoard): ResponseEntity<MainBoard> {
-        val savedBoard = boardService.saveBoard(board)
+        val savedBoard = boardServiceImpl.saveBoard(board)
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBoard)
     }
 
     @PutMapping("/{id}")
     fun updateBoard(@PathVariable id: Long, @RequestBody updatedBoard: MainBoard): ResponseEntity<MainBoard> {
-        val updated = boardService.updateBoard(id, updatedBoard)
+        val updated = boardServiceImpl.updateBoard(id, updatedBoard)
         return ResponseEntity.ok().body(updated)
     }
 
     @DeleteMapping("/{id}")
     fun deleteBoard(@PathVariable id: Long): ResponseEntity<Void> {
-        boardService.deleteBoard(id)
+        boardServiceImpl.deleteBoard(id)
         return ResponseEntity.noContent().build()
     }
 

@@ -13,13 +13,17 @@ data class User_info(
     @Comment("ID")
     @Column(length = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long,
 
     @Comment("PW")
-    @Column(nullable = false, length = 64)
+    @Column(nullable = true, length = 64)
     var password: String,
 
     @Comment("닉네임")
     @Column(nullable = false)
     var nickname: String,
+
+    //    @OneToMany(mappedBy = "boardList", fetch = FetchType.LAZY)
+//    var boardList: List<MainBoard> = ArrayList()
+
 )

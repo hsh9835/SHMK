@@ -12,7 +12,7 @@ data class  MainBoard(
     // 변경 가능성이 있는 필드 var (getter, setter), 없는 필드 val (Only getter)
     @Id
     @Comment("게시판 시퀀스")
-    @Column(nullable = false)
+    @Column(nullable = false, name = "boardSeq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val boardSeq: Long,
 
@@ -28,9 +28,10 @@ data class  MainBoard(
     @Column(name = "hashtag_list", nullable = false)
     var hashtag: List<String>,
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @Comment("유저 시퀀스")
-    @Column(name = "seq_user", nullable = false)
-    val seqUser: Long,
+    @JoinColumn(name = "seqUser", referencedColumnName = "ID", nullable = false)
+    val seqUser: User_info?,
 
     @Comment("추천수")
     @Column(name = "like_count")
@@ -46,15 +47,20 @@ data class  MainBoard(
     @Column(name = "REG_DT", nullable = false)
     var regDt: LocalDateTime? = null,
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @Comment("생성 주체 ID")
-    @Column(name = "REG_ID", nullable = false, length = 20)
-    val regId: String,
+    @JoinColumn(name = "regId", referencedColumnName = "ID", nullable = false)
+    val regId: User_info,
 
     @Column(name = "UPD_DT")
     var updDt: LocalDateTime? = null,
 
-    @Column(name = "UPD_ID", length = 20)
-    val updId: String? = null,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "updId", referencedColumnName = "ID")
+    val updId: User_info? = null,
+
+    @OneToMany(mappedBy = "boardSeq", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var commentLst: List<MainComment>? = null,
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
@@ -74,6 +80,6 @@ data class  MainBoard(
         if(regDt == null){
             regDt = LocalDateTime.now()
         }
-
+        commentLst = ArrayList<MainComment>()
     }
 }

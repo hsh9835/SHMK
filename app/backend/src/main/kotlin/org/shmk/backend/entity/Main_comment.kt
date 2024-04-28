@@ -7,24 +7,27 @@ import java.time.LocalDateTime
 
 @Entity
 @NoArgsConstructor
-@Table(name = "main_comment")
+@Table(name = "main_comment", indexes = [Index(name = "idx_board_seq", columnList = "boardSeq")],
+    uniqueConstraints = [UniqueConstraint(name = "uk_sub_seq", columnNames = ["subSeq"])])
 @Comment("게시물 댓글")
+//@NamedQuery(name = "MainComment.findByBoardSeq", query = "SELECT m FROM MainComment m WHERE m.boardSeq.boardSeq = ?1")
 data class MainComment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq", nullable = false, columnDefinition = "int auto_increment")
-    val comment_Seq: Long? = null,
+    val comment_Seq: Long,
 
     @Comment("게시판 번호")
-    @Column(name = "board_seq", nullable = false, columnDefinition = "int")
-    val boardSeq: Long? = null,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comment", referencedColumnName = "boardSeq", nullable = false)
+    val boardSeq: MainBoard? = null,
 
     @Comment("댓글 내용")
     @Column(name = "content", columnDefinition = "varchar(5000)")
     val comment_content: String? = null,
 
     @Comment("서브 시퀀스")
-    @Column(name = "sub_seq", columnDefinition = "int")
+    @Column(name = "subSeq", columnDefinition = "int")
     val subSeq: Int? = null,
 
     @Comment("댓글 해시태그")
@@ -44,35 +47,16 @@ data class MainComment (
     val regDt: LocalDateTime? = null,
 
     @Comment("등록인")
-    @Column(name = "REG_ID", nullable = false, columnDefinition = "varchar(20)")
-    val regId: String? = null,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "regId", referencedColumnName = "ID", nullable = false)
+    val regId: User_info? = null,
 
     @Comment("수정 날짜")
     @Column(name = "UPD_DT", columnDefinition = "datetime")
     val updDt: LocalDateTime? = null,
 
     @Comment("수정인")
-    @Column(name = "UPD_ID", columnDefinition = "varchar(20)")
-    val updId: String? = null,
-
-    // 관계 설정
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "board_seq", insertable = false, updatable = false)
-//    val mainBoard: MainBoard,
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "REG_ID", referencedColumnName = "id", insertable = false, updatable = false)
-//    val regUserInfo: User_info,
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "UPD_ID", referencedColumnName = "id", insertable = false, updatable = false)
-//    val updUserInfo: User_info
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "updId", referencedColumnName = "ID")
+    val updId: User_info? = null,
 )
-/*
-indexes = [
-        Index(name = "idx_board_seq", columnList = "board_seq")
-    ],
-    uniqueConstraints = [
-        UniqueConstraint(name = "uk_sub_seq", columnNames = ["sub_seq"])
-    ],
-*/
