@@ -1,10 +1,12 @@
 'use client'
 
-import {useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import ToastUIEditor from "@components/toast_ui/editor/toast_ui_editor";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function Write(){
+export const dynamic = "force-dynamic";
+
+export default function Write():ReactNode{
 
     const [tempSave, setTempSave] = useState<boolean>(false)
 

@@ -1,16 +1,6 @@
-import {MKServer} from "@/pages/api/MKServer";
 import {GithubLogin} from "@components/buttons/loginbuttons";
-import { getServerSession } from "next-auth";
-import {authOptions} from "@/pages/api/auth/[...nextauth]";
-import {redirect} from "next/navigation";
 
 export default async function login() {
-
-    let session = await getServerSession(authOptions)
-
-    if(session) {
-        redirect('/main/board')
-    }
 
     return(
         <div className={'flex flex-col bg-amber-200 h-full'}>
@@ -30,13 +20,8 @@ export default async function login() {
                     <div className={'mt-3'}>
                         <GithubLogin/>
                     </div>
-                    {session ?
-                        <img src={session.user.image}/>
-                        : <></>
-                    }
                 </div>
             </div>
-
         </div>
     )
 }

@@ -1,6 +1,4 @@
-import { createStore, applyMiddleware, Middleware } from 'redux';
-import thunk, {ThunkMiddleware, ThunkMiddleware} from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore } from 'redux';
 
 // 초기 상태
 const initialState = {
@@ -8,7 +6,7 @@ const initialState = {
 };
 
 // 리듀서
-const reducer = (state = initialState, action: { type: any; }) => {
+const reducer = (state = initialState, action: { type:never }) => {
     switch (action.type) {
         // 액션 유형에 따른 상태 업데이트 로직을 작성
         default:

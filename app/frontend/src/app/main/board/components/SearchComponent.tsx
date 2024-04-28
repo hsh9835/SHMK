@@ -1,6 +1,6 @@
 'use client'
 
-import {Fragment, useState} from "react"
+import {Fragment, ReactNode, useState} from "react"
 
 import axios from 'axios'
 import {Combobox, Transition} from "@headlessui/react";
@@ -21,7 +21,7 @@ const people:searchInterFace[] = [
     { id: 6, name: 'Hellen Schmidt' },
 ]
 
-export function SearchComponent():JSX.Element {
+export function SearchComponent():ReactNode {
     const [selected, setSelected] = useState()
     const [query, setQuery] = useState('')
 

@@ -1,7 +1,10 @@
 import {MKServer} from "@/pages/api/MKServer";
 import ToastUIViewer from "@components/toast_ui/editor/toast_ui_viewer";
+import {ReactElement} from "react";
 
-export default async function Content() {
+export const dynamic = "force-dynamic";
+
+export default async function Content():Promise<ReactElement> {
 
     const boardContent:Promise<string> = await MKServer.get('/hello')
         .then(e=> e.data)

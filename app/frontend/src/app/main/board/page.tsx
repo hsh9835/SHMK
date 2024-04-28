@@ -3,14 +3,16 @@ import {SearchComponent} from "@main/board/components/SearchComponent";
 import {SearchResultType} from "@main/board/components/SearchResultType";
 import {BoardList} from "@main/board/components/BoardList";
 import Link from "next/link";
+import {ReactNode} from "react";
 
 export interface SearchProps {
     setSearch: React.Dispatch<React.SetStateAction<string>>,
     search: string
 }
 
+export const dynamic = "force-dynamic";
 
-export default function Board():JSX.Element {
+export default function Board():ReactNode {
 
     return (
         <>

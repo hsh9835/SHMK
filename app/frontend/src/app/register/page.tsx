@@ -1,7 +1,9 @@
 export default function Register() {
     return (
         <div>
-            <form method="POST" action="/api/auth/signup">
+            <form method="POST" action="/api/auth/signup"
+                className={"flex"}
+            >
                 <input name="name" type="text" placeholder="이름" />
                 <input name="email" type="text" placeholder="이메일" />
                 <input name="password" type="password" placeholder="비번" />

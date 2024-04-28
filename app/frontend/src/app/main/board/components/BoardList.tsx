@@ -1,4 +1,3 @@
-import axios from "axios";
 import Link from "next/link";
 
 interface BoardContents {
@@ -47,7 +46,7 @@ export function BoardList() {
     return (
         <div>
             {
-                boardList.map((board, boardIndex) => {
+                boardList.map((board) => {
 
                     return (
                         <>
@@ -62,8 +61,12 @@ export function BoardList() {
                                         <div className={'border pl-2.5'}>
                                             {
                                                 Array.isArray(board.hashtag) && board.hashtag.every(tag => typeof tag === 'string') ?
-                                                    board.hashtag.map((tag, tagIndex) => {
-                                                        return (<a href={'#'} className={'mr-3.5'}>{tag}</a>)
+                                                    board.hashtag.map((tag) => {
+                                                        return (
+                                                            <>
+                                                                <a href={'#'} className={'mr-3.5'}>{tag}</a>
+                                                            </>
+                                                        )
                                                     }) : ''
                                             }
                                         </div>
