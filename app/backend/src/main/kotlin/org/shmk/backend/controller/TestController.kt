@@ -1,10 +1,8 @@
 package org.shmk.backend.controller
 
-import com.google.gson.Gson
+import com.nimbusds.jose.shaded.gson.Gson
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.service.BoardService
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.ui.Model

@@ -1,5 +1,5 @@
 
-import com.google.gson.Gson
+import com.nimbusds.jose.shaded.gson.Gson
 import org.shmk.backend.entity.MainBoard
 import org.shmk.backend.service.BoardService
 import org.springframework.http.HttpStatus
