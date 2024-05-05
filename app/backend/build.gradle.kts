@@ -33,7 +33,7 @@ extra["springCloudAzureVersion"] = "5.9.1"
 dependencies {
     // swagger ui 추가 springfox 지원 중단한지 오래되어서 spring docs로 교체
 //    implementation("io.springfox:springfox-boot-starter:3.0.0")
-    implementation("io.springfox:springfox-swagger-ui:3.0.0")
+//    implementation("io.springfox:springfox-swagger-ui:3.0.0")
 //    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.8.0")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 
