@@ -30,12 +30,12 @@ class SecurityConfig: WebMvcConfigurer {
         }
 
         http
-            .csrf().disable() // CSRF 토큰 검증 비활성화
+            .csrf { it.disable() } // csrf 설정 비활성화
             .cors { it.configurationSource { corsConfiguration } }
-            .authorizeRequests { authorizeRequests ->
-                authorizeRequests.anyRequest().permitAll()
+            .authorizeHttpRequests {
+                it.anyRequest().permitAll()
             }
-            .apply(HttpBasicConfigurer<HttpSecurity>()).disable() // Basic 인증 비활성화
+            .httpBasic { it.disable() }
         return http.build()
     }
 }
