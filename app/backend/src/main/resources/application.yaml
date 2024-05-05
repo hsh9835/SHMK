@@ -1,0 +1,27 @@
+# change port
+server:
+  port: 8999
+
+#Class.forName("com.mysql.java.dbc.Driver");
+#spring.datasource.driver-class-name=com.mysql.java.jdbc.Driver
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${mariadb.url}
+    username: ${mariadb.username}
+    password: ${mariadb.password}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+      minimum-idle: 2
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: create
+#      format_sql: true
+#      show_sql: true
+#      highlight_sql: true
+  h2:
+    console:
+      enabled: true
+
