@@ -1,3 +1,4 @@
+package org.shmk.backend.controller
 
 import com.nimbusds.jose.shaded.gson.Gson
 import org.shmk.backend.entity.MainBoard
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/board")
-class BoardController(private val boardService: BoardService) {
+class BoardController(private val boardService: BoardService){
 
     @GetMapping("/jsonTest")
     fun jsonTest(): String {

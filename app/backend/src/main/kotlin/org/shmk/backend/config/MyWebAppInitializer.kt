@@ -9,7 +9,7 @@ class MyWebAppInitializer : AbstractAnnotationConfigDispatcherServletInitializer
     }
 
     override fun getServletConfigClasses(): Array<Class<*>>? {
-        return arrayOf(ControllerConfig::class.java, SwaggerConfig::class.java, WebConfig::class.java, SecurityConfig::class.java);
+        return arrayOf(SwaggerConfig::class.java, WebConfig::class.java, SecurityConfig::class.java);
     }
 
     override fun getServletMappings(): Array<String> {

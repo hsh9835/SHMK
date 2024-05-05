@@ -11,9 +11,8 @@ import org.hibernate.annotations.Comment
 data class User_info(
     @Id
     @Comment("ID")
-    @Column(length = 20)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    @Column(name = "ID", nullable = false, length = 20)
+    val id: String,
 
     @Comment("PW")
     @Column(nullable = false, length = 64)

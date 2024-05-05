@@ -2,6 +2,7 @@ package org.shmk.backend.entity
 
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
+import org.apache.catalina.User
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
 
@@ -12,6 +13,7 @@ data class  MainBoard(
     // 변경 가능성이 있는 필드 var (getter, setter), 없는 필드 val (Only getter)
     @Id
     @Comment("게시판 시퀀스")
+    @Column(name = "board_seq", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val boardSeq: Long? = null,
 
@@ -25,7 +27,7 @@ data class  MainBoard(
 
     @Comment("해시태그 리스트")
     @Column(name = "hashtag_list", nullable = false)
-    var hashtag: List<String>,
+    var hashtag: String,
 
     @Comment("유저 시퀀스")
     @Column(name = "seq_user", nullable = false)
@@ -33,27 +35,31 @@ data class  MainBoard(
 
     @Comment("추천수")
     @Column(name = "like_count")
-    var like_count: Int? = null,
+    var likeCount: Int? = null,
 
     @Column(name = "hate_count")
-    var hate_count: Int? = null,
+    var hateCount: Int? = null,
 
     @Column(name = "seq_comment")
     val seqComment: Long? = null,
 
-    @Comment("생성날짜")
+    @Comment("생성 날짜")
     @Column(name = "REG_DT", nullable = false)
     var regDt: LocalDateTime? = null,
 
     @Comment("생성 주체 ID")
-    @Column(name = "REG_ID", nullable = false, length = 20)
-    val regId: String,
+    @ManyToOne
+    @JoinColumn(name = "REG_ID", referencedColumnName = "ID", nullable = false)
+    val regId: User_info,
 
+    @Comment("수정 날짜")
     @Column(name = "UPD_DT")
     var updDt: LocalDateTime? = null,
 
-    @Column(name = "UPD_ID", length = 20)
-    val updId: String? = null,
+    @Comment("수정 주체 ID")
+    @ManyToOne
+    @JoinColumn(name = "UPD_ID", referencedColumnName = "ID")
+    val updId: User_info? = null,
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
@@ -64,15 +70,14 @@ data class  MainBoard(
 //    val updUser: User_info
 ){
     init {
-        if(like_count == null){
-            like_count = 0
+        if(likeCount == null){
+            likeCount = 0
         }
-        if(hate_count == null){
-            hate_count = 0
+        if(hateCount == null){
+            hateCount = 0
         }
         if(regDt == null){
             regDt = LocalDateTime.now()
         }
-
     }
 }
