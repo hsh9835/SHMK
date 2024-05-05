@@ -28,10 +28,6 @@ data class User_info(
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var userID: String,
 
-    @Comment("userID")
-    @Column(nullable = false, length = 20)
-    var userID: String,
-
     @Comment("PW")
     @Column(nullable = true, length = 64)
     var password: String,

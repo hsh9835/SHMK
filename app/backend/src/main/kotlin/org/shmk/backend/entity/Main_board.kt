@@ -94,6 +94,6 @@ data class  MainBoard(
     }
 
     fun checkUser(board: MainBoard, user: User_info) {
-        if (!board.seqUser?.equals(user.id)!!) throw Exception()
+        if (!board.seqUser?.equals(user.userID)!!) throw Exception()
     }
 }
