@@ -1,0 +1,24 @@
+name: Extract Push Logs
+
+on:
+  push:
+    branches:
+      - feature/backendbug
+
+jobs:
+  extract-logs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Extract push logs
+        run: |
+          git log --format="%h %s" > push_logs.txt
+          
+      - name: Upload logs as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: push-logs
+          path: push_logs.txt
