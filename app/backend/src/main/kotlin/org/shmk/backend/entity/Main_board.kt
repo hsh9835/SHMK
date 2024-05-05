@@ -59,8 +59,9 @@ data class  MainBoard(
     @JoinColumn(name = "updId", referencedColumnName = "ID")
     val updId: User_info? = null,
 
-    @OneToMany(mappedBy = "boardSeq", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "boardSeq", cascade = [CascadeType.REMOVE])
     var commentLst: List<MainComment>? = null,
+
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
@@ -81,5 +82,9 @@ data class  MainBoard(
             regDt = LocalDateTime.now()
         }
         commentLst = ArrayList<MainComment>()
+    }
+
+    fun checkUser(board: MainBoard, user: User_info) {
+        if (!board.seqUser?.equals(user.id)!!) throw Exception()
     }
 }
