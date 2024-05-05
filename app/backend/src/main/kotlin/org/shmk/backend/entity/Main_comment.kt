@@ -14,17 +14,17 @@ import java.time.LocalDateTime
 data class MainComment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seq", nullable = false, columnDefinition = "int auto_increment")
-    val comment_Seq: Long,
+    @Column(name = "commentSeq", nullable = false, columnDefinition = "int auto_increment")
+    val commentSeq: Long,
 
     @Comment("게시판 번호")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment", referencedColumnName = "boardSeq", nullable = false)
-    val boardSeq: MainBoard? = null,
+    @ManyToOne
+    @JoinColumn(name = "boardSeq", referencedColumnName = "boardSeq", nullable = false)
+    val boardSeq: MainBoard,
 
     @Comment("댓글 내용")
     @Column(name = "content", columnDefinition = "varchar(5000)")
-    val comment_content: String? = null,
+    val commentContent: String? = null,
 
     @Comment("서브 시퀀스")
     @Column(name = "subSeq", columnDefinition = "int")
@@ -32,31 +32,31 @@ data class MainComment (
 
     @Comment("댓글 해시태그")
     @Column(name = "comment_hashtag", columnDefinition = "varchar(21)")
-    val comment_hashtag: String? = null,
+    val commentHashtag: String? = null,
 
     @Comment("추천 수")
     @Column(name = "like_count", columnDefinition = "int")
-    val like_count: Int? = null,
+    val likeCount: Int? = null,
 
     @Comment("싫어요 수")
     @Column(name = "hate_count", columnDefinition = "int")
-    val hate_count: Int? = null,
+    val hateCount: Int? = null,
 
     @Comment("등록 날짜")
     @Column(name = "REG_DT", nullable = false, columnDefinition = "datetime")
-    val regDt: LocalDateTime? = null,
+    val regDt: LocalDateTime,
 
     @Comment("등록인")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "regId", referencedColumnName = "ID", nullable = false)
-    val regId: User_info? = null,
+//    @ManyToOne
+//    @JoinColumn(name = "regId", referencedColumnName = "userID", nullable = false)
+    val regId: User_info,
 
     @Comment("수정 날짜")
     @Column(name = "UPD_DT", columnDefinition = "datetime")
     val updDt: LocalDateTime? = null,
 
     @Comment("수정인")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "updId", referencedColumnName = "ID")
-    val updId: User_info? = null,
+//    @ManyToOne
+//    @JoinColumn(name = "updId", referencedColumnName = "userID")
+    val updId: User_info,
 )

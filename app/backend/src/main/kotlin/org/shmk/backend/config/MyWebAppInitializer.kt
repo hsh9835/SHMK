@@ -1,6 +1,5 @@
 package org.shmk.backend.config
 
-import ControllerConfig
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer
 
@@ -11,8 +10,7 @@ class MyWebAppInitializer : AbstractAnnotationConfigDispatcherServletInitializer
     }
 
     override fun getServletConfigClasses(): Array<Class<*>>? {
-        return arrayOf(ControllerConfig::class.java, WebMvcConfigurer::class.java
-            , SecurityConfig::class.java);
+        return arrayOf(WebMvcConfigurer::class.java, SecurityConfig::class.java);
     }
 
     override fun getServletMappings(): Array<String> {

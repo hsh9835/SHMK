@@ -8,7 +8,7 @@ create table main_board
     seq_user    int           not null comment '유저 시퀀스',
     like_count  int           null comment '추천수',
     hate_count  int           null,
-    seq_comment int           null,
+--     seq_comment int           null,
     REG_DT      datetime      not null comment '생성날짜',
     REG_ID      varchar(20)   not null comment '생성 주체 ID',
     UPD_DT      datetime      null,
