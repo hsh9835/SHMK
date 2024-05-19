@@ -63,7 +63,9 @@ jobs:
         working-directory: ./app/backend  # 원하는 디렉토리로 설정
 
     - name: Move gradle directory
-      run: cd ./app/backend
+      run: |
+        cd ./app/backend
+        pwd
 
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
