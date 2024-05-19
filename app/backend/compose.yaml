@@ -3,11 +3,13 @@ services:
     image: 'mariadb:latest'
     container_name: 'SHMK_mariadb'
     environment:
-      - 'MARIADB_DATABASE=SHMK'
+      - 'MARIADB_URL=jdbc:mariadb://mariadb:3306/SHMK'
       - 'MARIADB_USER=root'
       - 'MARIADB_PASSWORD=1234'
       - 'MARIADB_ROOT_PASSWORD=1234'
-      - 'MARIADB_URL=jdbc:mariadb://mariadb:3306/SHMK'
+      - 'MARIADB_DATABASE=SHMK'
       - 'SPRING_JPA_HIBERNATE_DDL-AUTO=create'
     ports:
       - '9905:3306'
+    volumes:
+      - ./mysql/schema.sql:/docker-entrypoint-initdb.d
