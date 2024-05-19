@@ -60,10 +60,8 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-
-    - name: Check now directory
-      run: realpath .
+      working-directory: ./app/backend  # 원하는 디렉토리로 설정
 
     - name: Generate and submit dependency graph
-      working-directory: ./app/backend
-      run: ./gradlew generateDependencyGraph --output-file dependency-graph.json && ./gradlew submitDependencyGraph --input-file dependency-graph.json
+      uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+      working-directory: ./app/backend  # 원하는 디렉토리로 설정
