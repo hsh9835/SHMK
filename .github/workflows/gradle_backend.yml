@@ -61,6 +61,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
+    - name: Check now directory
+      run: realpath .
+
     - name: Generate and submit dependency graph
       working-directory: ./app/backend
       run: ./gradlew generateDependencyGraph --output-file dependency-graph.json && ./gradlew submitDependencyGraph --input-file dependency-graph.json
