@@ -61,8 +61,6 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
-    # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       working-directory: ./app/backend
-      uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+      run: ./gradlew generateDependencyGraph --output-file dependency-graph.json && ./gradlew submitDependencyGraph --input-file dependency-graph.json
